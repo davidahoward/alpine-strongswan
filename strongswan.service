@@ -7,10 +7,9 @@ Requires=docker.service
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill strongswan
 ExecStartPre=-/usr/bin/docker rm strongswan
-#ExecStartPre=/usr/bin/docker pull strongswan
+#!ExecStartPre=/usr/bin/docker pull strongswan
 #ExecStart=/usr/bin/docker run --name=strongswan --privileged=true --net=host --cap-add=ALL -v $PWD/config/ipsec.conf:/etc/ipsec.conf -v $PWD/config/ipsec.d:/etc/ipsec.d -v $PWD/config/ipsec.secrets:/etc/ipsec.secrets -v $PWD/config/strongswan.conf:/etc/strongswan.conf -v $PWD/config/strongswan.d:/etc/strongswan.d  dhoward/strongswan
-ExecStart=/usr/bin/docker run -d  --cap-add=NET_ADMIN   --net=host   -v $PWD/config/strongswan.conf:/etc/strongswan.conf   -v $PWD/config/ipsec.conf:/etc/ipsec.conf   -v $PWD/config/ipsec.secrets:/etc/ipsec.secrets  --name=strongswan   dhoward/strongswan
-
+ExecStart=/usr/bin/docker run -d --cap-add=NET_ADMIN --net=host -v $PWD/config/strongswan.conf:/etc/strongswan.conf -v $PWD/config/strongswan.d:/etc/strongswan.d -v $PWD/config/ipsec.conf:/etc/ipsec.conf -v $PWD/config/ipsec.d:/etc/ipsec.d -v $PWD/config/ipsec.secrets:/etc/ipsec.secrets --name=strongswan dhoward/strongswan
 ExecStop=/usr/bin/docker stop strongswan
 
 [Install]
