@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:latest
 MAINTAINER David A Howard <david.a.howard@ieee.org>
 ADD src /
 RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.6/main > /etc/apk/repositories;\
